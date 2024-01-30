@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart</title>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #dcf5ee;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+textarea {
+    height: 100px;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+    input[type="text"],
+    input[type="tel"],
+    input[type="number"],
+    textarea {
+        width: 100%;
+    }
+}
+
+    
+</style>
+
+</head>
+<body>
+<div class="container">
+<h1>Cart</h1>
+<form action="https://formsubmit.co/mpoornima219@gmail.com" method="post" onsubmit="return validateForm();">
+    <label>Pid: <input type="text" id="Pid" name="Pid"></label>
+    <br>
+    <label>Name: <input type="text" id="Name" name="Name"></label>
+    <br>
+    <label>Email: <input type="text" id="Email" name="Email"></label>
+    <br>
+    <label>Phone: <input type="tel" id="Phone" name="Phone"></label>
+    <br>
+    <label>Address: <textarea id="Address" name="Address"></textarea></label>
+    <br>
+    <label>Pincode: <input type="number" id="Pincode" name="Pincode"></label>
+    <br>
+    <input type="submit" value="Proceed">
+</form>
+<div id="error-messages" class="error"></div>
+</div>
+
+<script>
+    function validateForm() {
+        var pid = document.getElementById("Pid").value;
+        var name = document.getElementById("Name").value;
+        var email = document.getElementById("Email").value;
+        var phone = document.getElementById("Phone").value;
+        var address = document.getElementById("Address").value;
+        var pincode = document.getElementById("Pincode").value;
+
+        // Regular expressions for validation
+        var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        var phoneRegex = /^\d{10}$/;
+        var pincodeRegex = /^\d{6}$/;
+
+        var errorMessages = [];
+
+        if (pid.trim() === "") {
+            errorMessages.push("Please enter a Product ID.");
+        }
+
+        if (name.trim() === "") {
+            errorMessages.push("Please enter your Name.");
+        }
+
+        if (!email.match(emailRegex)) {
+            errorMessages.push("Please enter a valid Email address.");
+        }
+
+        if (!phone.match(phoneRegex)) {
+            errorMessages.push("Please enter a valid 10-digit Phone number.");
+        }
+
+        if (address.trim() === "") {
+            errorMessages.push("Please enter your Address.");
+        }
+
+        if (!pincode.match(pincodeRegex)) {
+            errorMessages.push("Please enter a valid 6-digit Pincode.");
+        }
+
+        if (errorMessages.length > 0) {
+            var errorDiv = document.getElementById("error-messages");
+            errorDiv.innerHTML = errorMessages.join("<br>");
+            return false; // Prevent form submission
+        }
+
+        return true; // Allow form submission
+    }
+</script>
+</body>
+</html>

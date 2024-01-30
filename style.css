@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.welcome{
+    height:600px;
+    width:100%;
+}
+.d-block{
+    height:300px;
+}
+.contain{
+   
+    padding: 50px;
+    background-color: gray;
+}
+#carouselExample{
+    margin-top: 50px;
+}
+.hotbox{
+    height: 200px;
+    float:left;
+}
+.btn{
+    margin-top: 40px;
+    margin-left: 20px;
+}
+.desc{
+    margin-top: 50px;
+}
+.sturdy{
+    float:right;
+}
+.video{
+    margin-top: 50px;
+}
